@@ -34,7 +34,7 @@ class UserController extends AdminController
         $grid->column('name', __('Name'));
         $grid->column('email', __('Email'));
         $grid->column('phone_number', __('Phone number'));
-        $grid->column('recommendation', __('Recommendation'));
+        // $grid->column('recommendation', __('Recommendation'));
         $grid->column('address', __('Address'));
         //$grid->column('created_at')->date('Y-m-d');
         $grid->column('created_at', __('Created at'));
@@ -99,7 +99,7 @@ class UserController extends AdminController
             'regex' => 'at least one letter and one number',
         ]);
         $form->text('phone_number', __('Phone number'))->rules('required|min:11');
-        $form->textarea('recommendation', __('Recommendation'));
+        // $form->textarea('recommendation', __('Recommendation'));
         $form->text('address', __('Address'))->rules('required');
 
         return $form;

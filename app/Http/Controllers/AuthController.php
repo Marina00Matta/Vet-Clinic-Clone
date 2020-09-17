@@ -45,12 +45,11 @@ class AuthController extends Controller
       $user= User::create([
             'name'=>$request->name,
             'email'=>$request->email,
-            'recommendation'=>$request->recommendation,
             'phone_number'=>$request->phone_number,
             'address'=>$request->address,
             'password'=> $request->password,
         ]);
-       
+ 
        
         return $this->login($request);
 

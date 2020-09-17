@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateReservationsTable extends Migration
+class CreateServiceInventoryTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,13 @@ class CreateReservationsTable extends Migration
      */
     public function up()
     {
-        Schema::create('reservations', function (Blueprint $table) {
+        Schema::create('service_inventory', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('service_id');
             $table->foreign('service_id')->references('id')->on('services');
-            $table->dateTime('date');
-            $table->boolean('status');
+            $table->unsignedBigInteger('visit_id');
+            $table->foreign('visit_id')->references('id')->on('visits');
+            $table->integer('quantity');
             $table->timestamps();
         });
     }
@@ -30,6 +31,6 @@ class CreateReservationsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('reservations');
+        Schema::dropIfExists('service_inventory');
     }
 }

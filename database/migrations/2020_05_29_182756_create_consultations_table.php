@@ -16,8 +16,10 @@ class CreateConsultationsTable extends Migration
         Schema::create('consultations', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users');
             $table->unsignedBigInteger('pet_id');
-            $table->unsignedBigInteger('reservation_id');
+            $table->foreign('pet_id')->references('id')->on('pets');
+            // $table->unsignedBigInteger('reservation_id');
             $table->mediumText('presenting_signs')->nullable();
             $table->mediumText('frequency_and_duration')->nullable();
             $table->mediumText('appetite')->nullable();
@@ -43,7 +45,7 @@ class CreateConsultationsTable extends Migration
             $table->mediumText('skeletal')->nullable();
             $table->mediumText('DDx')->nullable();
             $table->mediumText('tests')->nullable();
-            $table->mediumText('treatment')->nullable();
+            // $table->mediumText('treatment')->nullable();
             $table->timestamps();
         });
     }

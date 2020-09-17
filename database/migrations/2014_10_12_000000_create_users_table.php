@@ -20,7 +20,8 @@ class CreateUsersTable extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->string('phone_number')->unique()->nullable();
-            $table->mediumText('recommendation')->nullable();
+            $table->date('last_visit')->nullable();
+            $table->date('contacted')->nullable();
             $table->string('address')->nullable();
             $table->rememberToken();
             $table->timestamps();

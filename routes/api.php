@@ -15,11 +15,10 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-Route::group([
-    'middleware' => 'api',
-], function ($router) {
+// Route::group([
+    // 'middleware' => 'api',
+// ], function ($router) {
     Route::post('login', 'AuthController@login');
-    Route::post('signup', 'AuthController@signup');
     Route::post('logout', 'AuthController@logout');
     Route::post('refresh', 'AuthController@refresh');
     Route::post('me', 'AuthController@me');
@@ -30,7 +29,9 @@ Route::group([
     Route::get('pets','API\PetsController@index');
     Route::post('/boardings', 'API\BoardingController@add');
     Route::delete('reservations/{id}', 'API\ReservationController@destroy');
-});
+// });
+
+Route::post('signup', 'AuthController@signup');
 
 Route::get('/services', 'API\ServiceController@index');
 Route::get('/services/{service}', 'API\ServiceController@show');

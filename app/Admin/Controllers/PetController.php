@@ -37,7 +37,7 @@ class PetController extends AdminController
         $grid->column('age', __('Age'));
         $grid->column('weight', __('Weight'));
         $grid->column('neutered', __('Neutered'));
-        $grid->column('previous_problems', __('Previous problems'));
+        // $grid->column('previous_problems', __('Previous problems'));
         $grid->column('drug_allergies', __('Drug allergies'));
         $grid->column('current_diet', __('Current diet'));
         $grid->column('current_medication', __('Current medication'));
@@ -105,7 +105,7 @@ class PetController extends AdminController
         $form->number('age', __('Age'));
         $form->decimal('weight', __('Weight'))->rules('required|min:1|max:2');
         $form->radio('neutered')->options(['yes' => 'Yes', 'no'=> 'No'])->default('no'); 
-        $form->textarea('previous_problems', __('Previous problems'))->rules('nullable')->default('none');
+        // $form->textarea('previous_problems', __('Previous problems'))->rules('nullable')->default('none');
         $form->textarea('drug_allergies', __('Drug allergies'))->rules('nullable')->default('none');
         $form->textarea('current_diet', __('Current diet'))->default('none');
         $form->textarea('current_medication', __('Current medication'))->rules('nullable')->default('none');
