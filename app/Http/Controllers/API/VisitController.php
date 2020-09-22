@@ -25,6 +25,14 @@ class VisitController extends Controller
     public function store(Request $request)
     {
         // 'pet_id' => Pet::where('name',$request->pet_name)->pluck('id')->first(),
+        $visit  = new Visit();
+        $visit->user_id = $request->user_id;
+        $visit->pet_id = $request->pet_id;
+        $visit->date = $request->date;
+        $visit->time = $request->time;
+        $visit->status = 'pending';
+        $visit.save();
+        return response()->json(['status' => 'success' ]); 
 
     }
 
