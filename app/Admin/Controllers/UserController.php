@@ -101,7 +101,7 @@ class UserController extends AdminController
         $form->text('phone_number', __('Phone number'))->rules('required|min:11');
         // $form->textarea('recommendation', __('Recommendation'));
         $form->text('address', __('Address'))->rules('required');
-
+        
         return $form;
     }
 
