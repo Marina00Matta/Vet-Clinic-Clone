@@ -29,8 +29,8 @@ class VisitController extends Controller
         $visit->pet_id = $request->pet_id;
         $visit->date = $request->date;
         $visit->time = $request->time;
-        $visit->status = 'pending';
-        $visit.save();
+        $visit->status = $request->status;
+        $visit->save();
         return response()->json(['status' => 'success' ]); 
 
     }
