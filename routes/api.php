@@ -40,3 +40,4 @@ Route::get('/services/{service}', 'API\ServiceController@show');
 /*pet register */
 Route::post('/pet/add','API\PetsController@add');
 
+Route::post('/visits','API\VisitController@store');
