@@ -15,8 +15,9 @@ class CreateDoctorAppointmentsTable extends Migration
     {
         Schema::create('doctor__appointments', function (Blueprint $table) {
             $table->id();
-            $table->string('day');
-            
+            $table->string('day')->nullable();
+            $table->date('date');
+            $table->time('time');
             $table->timestamps();
         });
     }

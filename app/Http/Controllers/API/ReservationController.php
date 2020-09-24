@@ -24,22 +24,20 @@ class ReservationController extends Controller
     */
     public function store(ReservationRequest $request)
     {
-        $isExists = Reservation::where('user_id',$request->client_id)
-            ->where('pet_id',Pet::where('name',$request->pet_name)->pluck('id')->first())
-            ->where('service_id',Service::where('name',$request->service_name)->pluck('id')->first())
-            ->where('date',$request->date)->exists();   
+        // $isExists = Reservation::where
+        //     ->where('service_id',Service::where('name',$request->service_name)->pluck('id')->first())
+        //     ->where('date',$request->date)->exists();   
                
-        if ($isExists) 
-        {
-            return response()->json(['status' => 'error','message' => 'You already have a reservation']);
-        }
-
+        // if ($isExists) 
+        // {
+        //     return response()->json(['status' => 'error','message' => 'You already have a reservation']);
+        // }
 
         $reservation = new Reservation();
-        $reservation->user_id = $request->client_id;
-        $reservation->pet_id = Pet::where('name',$request->pet_name)->pluck('id')->first();
-        $reservation->service_id = Service::where('name',$request->service_name)->pluck('id')->first();
+        // $reservation->pet_id = Pet::where('name',$request->pet_name)->pluck('id')->first();
+        $reservation->service_id = $request->service_id;
         $reservation->date = $request->date;
+        $reservation->status = $request->status;
         $reservation->save();
         return response()->json(['reservation_id' => $reservation->id ,'status' => 'success' ]);
     }
@@ -50,7 +48,7 @@ class ReservationController extends Controller
         {
             return response()->json([
                 'status' => 'success',
-                'message'=> 'Reservation Cancled'
+                'message'=> 'Reservation Canceled'
             ]);
         }
         else
