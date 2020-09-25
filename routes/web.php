@@ -18,6 +18,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+
 // Route::get('test', function () {
 
 //     Mail::to('marinamedhat_19@hotmail.com')->send(new \App\Mail\NewMail($user));

@@ -52,9 +52,13 @@ Route::group([
     $router->resource('appointments', AppointmentController::class);
 
     /*VISIT ROUTES*/
+    $router->resource('visits/confirmed','UserController@confirmed');
+
     $router->resource('visits', VisitController::class);
 
+    // $router->resource('visits/confirmed','UserController@confirmed');
 
+    $
    
     });
    

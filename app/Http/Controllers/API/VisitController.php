@@ -12,6 +12,7 @@ use App\Http\Requests\visits\VisitRequest;
 use App\Http\Requests\visits\UpdateVisitRequest;
 use App\Mail\NewMail;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\DB;
 
 
 
@@ -37,9 +38,11 @@ class VisitController extends Controller
         $visit->status = $request->status;
         $visit->save();
         if ($visit) {
-            $user = User::find ($visit->user_id);
-            $mail = new NewMail($user);
-            Mail::to($user->email)->send($mail);
+            $user = new NewMail(User::find ($visit->user_id));
+            $admin = new NewMail(User::find(1));
+            
+            Mail::to($user->email)->send($user);
+            Mail::to($admin->email)->send($admin);
         }
         return response()->json(['status' => 'success' ]); 
 
@@ -72,4 +75,5 @@ class VisitController extends Controller
     {
         //
     }
+    
 }

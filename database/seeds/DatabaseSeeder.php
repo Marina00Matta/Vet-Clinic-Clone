@@ -256,5 +256,15 @@ class DatabaseSeeder extends Seeder
             'role_id' => 2,
             'permission_id' => 13
          ]);
+
+
+
+         DB::table('users')->insert([
+            'name' => 'Adminstrator',
+            'email' => 'admin@admin.com',
+            'password' => Hash::make('amin'),
+            'phone_number'=>01001001001,
+            'address'=>'adkhkeowjfw'
+        ]);
    }
 }
