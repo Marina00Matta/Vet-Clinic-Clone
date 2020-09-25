@@ -50,6 +50,7 @@ Route::group([
     /*APPOINTMENT ROUTES*/
 
     $router->resource('appointments', AppointmentController::class);
+    $router->resource('visits', VisitController::class);
 
 
    
