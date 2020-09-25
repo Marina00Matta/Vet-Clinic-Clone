@@ -25,7 +25,7 @@ class VisitRequest extends FormRequest
     {
         return [
             'user_id'=>'required',
-            'pet_id'=>'required|unique:users',
+            'pet_id'=>'required',
             'date'=>'required',
             'time'=>'required',
             'status'=>'nullable',

@@ -54,7 +54,9 @@ Route::group([
     /*VISIT ROUTES*/
     $router->resource('visits', VisitController::class);
 
+    /*FOLLOW-UP ROUTES*/
 
-   
+    $router->resource('users', FollowupController::class);
+
     });
    
