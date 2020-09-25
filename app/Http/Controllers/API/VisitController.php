@@ -6,9 +6,12 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Visit;
 use App\Pet;
+use App\User;
 use App\Http\Resources\VisitResource;
 use App\Http\Requests\visits\VisitRequest;
 use App\Http\Requests\visits\UpdateVisitRequest;
+use App\Mail\NewMail;
+use Illuminate\Support\Facades\Mail;
 
 
 
@@ -33,6 +36,11 @@ class VisitController extends Controller
         $visit->time = $request->time;
         $visit->status = $request->status;
         $visit->save();
+        if ($visit) {
+            $user = User::find ($visit->user_id);
+            $mail = new NewMail($user);
+            Mail::to($user->email)->send($mail);
+        }
         return response()->json(['status' => 'success' ]); 
 
     }

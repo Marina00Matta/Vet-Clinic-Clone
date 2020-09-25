@@ -18,15 +18,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('test', function () {
+// Route::get('test', function () {
 
-    $user = [
-        'name' => 'Mahedi Hasan',
-        'info' => 'Laravel Developer'
-    ];
+//     Mail::to('marinamedhat_19@hotmail.com')->send(new \App\Mail\NewMail($user));
 
-    Mail::to('marinamedhat_19@hotmail.com')->send(new \App\Mail\NewMail($user));
+//     dd("success");
 
-    dd("success");
-
-});
+// });
