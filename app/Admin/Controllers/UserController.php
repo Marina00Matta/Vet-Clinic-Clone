@@ -34,7 +34,7 @@ class UserController extends AdminController
         $grid->column('name', __('Name'));
         $grid->column('email', __('Email'));
         $grid->column('phone_number', __('Phone number'));
-        // $grid->column('recommendation', __('Recommendation'));
+        $grid->column('last_visit', __('Last Visit'));
         $grid->column('address', __('Address'));
         //$grid->column('created_at')->date('Y-m-d');
         $grid->column('created_at', __('Created at'));
@@ -62,16 +62,17 @@ class UserController extends AdminController
     
       
          //filter by name
-        $grid->filter(function($filter){
+        // $grid->filter(function($filter){
 
-            $filter->disableIdFilter();
-            $filter->like('name', 'name');
+        //     $filter->disableIdFilter();
+        //     $filter->like('last_visit', 'Last Visit');
         
-        });
+        // });
         //to add pet from users index
         $grid->tools(function ($tools) {
             $tools->append("<a href='/admin/pets/create' class='btn btn-default'>Add Pet</a>");
         });
+
 
       
 
@@ -94,7 +95,7 @@ class UserController extends AdminController
         $show->field('phone_number', __('Phone number'));
         $show->field('recommendation', __('Recommendation'));
         $show->field('address', __('Address'));
-
+        $show->field('last_visit', __('Last Visit'));
         $show->field('created_at', __('Created at'));
         $show->field('updated_at', __('Updated at'));
 
@@ -119,18 +120,10 @@ class UserController extends AdminController
         ]);
         $form->text('phone_number', __('Phone number'))->rules('required|min:11');
         // $form->textarea('recommendation', __('Recommendation'));
-        $form->text('address', __('Address'));
-        
-        return $form;
-    }
+    
+        $form->date('last_visit', __('Last Visit'));
 
-
-    protected function createPet($id)
-    {
-        $user = User::findOrFail($id);
-        $form = new Form(new Pet());
-        $form->text('User')->value($user->name) ;
-        $form->text('name', __('Name'))->rules('required|min:3');
+        $form->text('address', __('Address'))->rules('required');
         
         return $form;
     }

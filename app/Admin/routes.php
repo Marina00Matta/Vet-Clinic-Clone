@@ -55,10 +55,10 @@ Route::group([
     $router->resource('visits/confirmed','UserController@confirmed');
 
     $router->resource('visits', VisitController::class);
+ 
+    /*FOLLOW-UP ROUTES*/
 
-    // $router->resource('visits/confirmed','UserController@confirmed');
+    $router->resource('users', FollowupController::class);
 
-    $
-   
     });
    
