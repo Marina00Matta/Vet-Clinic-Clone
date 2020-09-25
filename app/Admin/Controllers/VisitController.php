@@ -7,7 +7,8 @@ use Encore\Admin\Controllers\AdminController;
 use Encore\Admin\Form;
 use Encore\Admin\Grid;
 use Encore\Admin\Show;
-
+use App\User;
+use App\Pet;
 class VisitController extends AdminController
 {
     /**
@@ -27,8 +28,10 @@ class VisitController extends AdminController
         $grid = new Grid(new Visit());
 
         $grid->column('id', __('Id'));
-        $grid->column('user_id', __('User id'));
-        $grid->column('pet_id', __('Pet id'));
+        $grid->column('user.name', __('Pet Owner'));
+        $grid->column('pet.name', __('Pet Name'));
+        // $grid->column('user_id', __('User id'));
+        // $grid->column('pet_id', __('Pet id'));
         $grid->column('date', __('Date'));
         $grid->column('time', __('Time'));
         $grid->column('status', __('Status'));
@@ -49,8 +52,10 @@ class VisitController extends AdminController
         $show = new Show(Visit::findOrFail($id));
 
         $show->field('id', __('Id'));
-        $show->field('user_id', __('User id'));
-        $show->field('pet_id', __('Pet id'));
+        $show->field('user.name', __('Pet Owner'));
+        $show->field('pet.name', __('Pet Name'));
+        // $show->field('user_id', __('User id'));
+        // $show->field('pet_id', __('Pet id'));
         $show->field('date', __('Date'));
         $show->field('time', __('Time'));
         $show->field('status', __('Status'));
@@ -69,11 +74,15 @@ class VisitController extends AdminController
     {
         $form = new Form(new Visit());
 
-        $form->number('user_id', __('User id'));
-        $form->number('pet_id', __('Pet id'));
+        $form->select('user_id',__('Pet Owner'))->options(User::all()->pluck('name','id'))->rules('required');
+        $form->select('pet_id',__('Pet Name'))->options(Pet::all()->pluck('name','id'))->rules('required');
         $form->date('date', __('Date'))->default(date('Y-m-d'));
         $form->time('time', __('Time'))->default(date('H:i:s'));
-        $form->text('status', __('Status'))->default('pending');
+        $form->select('status',__('Status'))->options([
+            'pending' => 'Pending',
+            'completed' => 'completed',
+            'canceled' => 'Canceled',
+        ])->default('pending');
 
         return $form;
     }
