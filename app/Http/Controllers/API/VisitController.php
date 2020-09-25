@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use App\Visit;
 use App\Pet;
 use App\Http\Resources\VisitResource;
+use App\Http\Requests\visits\VisitRequest;
+use App\Http\Requests\visits\UpdateVisitRequest;
 
 
 
@@ -22,7 +24,7 @@ class VisitController extends Controller
     }
 
    
-    public function store(Request $request)
+    public function store(VisitRequest $request)
     {
         $visit  = new Visit();
         $visit->user_id = $request->user_id;
@@ -42,9 +44,19 @@ class VisitController extends Controller
     }
 
    
-    public function update(Request $request, $id)
+    public function update(VisitRequest $request)
     {
-        //
+        $visit = Visit::find($request->visit);
+        $visit->user_id = $request->user_id;
+        $visit->pet_id = $request->pet_id;
+        $visit->status = $request->status;
+        $visit->save();
+    }
+    public function updateStatus(UpdateVisitRequest $request)
+    {
+        $visit = Visit::find($request->visit);
+        $visit->status = $request->status;
+        $visit->save();
     }
 
     
