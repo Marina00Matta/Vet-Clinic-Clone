@@ -43,7 +43,12 @@ Route::group([
     /*CONSULTATION ROUTES*/
     $router->resource('consultations', ConsultationController::class);
 
+    /*MEDICINE ROUTES*/
+    $router->resource('medicines', MedicineController::class);
 
+    /*APPOINTMENT ROUTES*/
+
+    $router->resource('appointments', AppointmentController::class);
 
 
    
