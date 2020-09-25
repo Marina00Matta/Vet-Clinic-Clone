@@ -18,17 +18,17 @@ class MedicineController extends Controller
     }
 
     
-    // public function store(Request $request)
-    // {
+    public function store(Request $request)
+    {
         
 
-    //     $medicine = new Medicine([
-    //         'name' => $request->get('name'),
+        $medicine = new Medicine([
+            'name' => $request->get('name'),
             
-    //     ]);
-    //     $medicine->save();
-    //     return response()->json(['status' => 'success' ]); 
-    // }
+        ]);
+        $medicine->save();
+        return response()->json(['status' => 'success' ]); 
+    }
 
     
     // public function show($id)
