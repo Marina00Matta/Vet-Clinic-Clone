@@ -37,6 +37,9 @@ class VisitController extends AdminController
         $grid->column('status', __('Status'));
         $grid->column('created_at', __('Created at'));
         $grid->column('updated_at', __('Updated at'));
+        $grid->column('confirmed')->display(function() {
+            return '<a href="/admin/visits/confirmed">confirm</a>';
+        });
 
         $grid->filter(function($filter){
 
@@ -44,6 +47,7 @@ class VisitController extends AdminController
             $filter->like('name', 'PetOwner');
         
         });
+        
 
         return $grid;
     }
@@ -92,5 +96,11 @@ class VisitController extends AdminController
         ])->default('pending');
 
         return $form;
+    }
+
+
+    public function confirmed()
+    {
+        dd('done');
     }
 }

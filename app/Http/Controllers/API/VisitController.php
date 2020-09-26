@@ -38,11 +38,13 @@ class VisitController extends Controller
         $visit->status = $request->status;
         $visit->save();
         if ($visit) {
-            $user = new NewMail(User::find ($visit->user_id));
-            $admin = new NewMail(User::find(1));
+            $user = User::find ($visit->user_id);
+            $user_mail = new NewMail($user);
+            $admin = User::find(1);
+            $admin_mail = new NewMail($admin);
             
-            Mail::to($user->email)->send($user);
-            Mail::to($admin->email)->send($admin);
+            Mail::to($user->email)->send($user_mail);
+            Mail::to($admin->email)->send($admin_mail);
         }
         return response()->json(['status' => 'success' ]); 
 

@@ -52,8 +52,7 @@ Route::group([
     $router->resource('appointments', AppointmentController::class);
 
     /*VISIT ROUTES*/
-    $router->resource('visits/confirmed','UserController@confirmed');
-
+    $router->get('visits/confirmed', 'VisitController@confirmed');
     $router->resource('visits', VisitController::class);
  
     /*FOLLOW-UP ROUTES*/
