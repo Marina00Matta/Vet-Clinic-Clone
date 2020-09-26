@@ -29,7 +29,7 @@ class UserController extends AdminController
     protected function grid()
     {
         $grid = new Grid(new User());
-
+        
         $grid->column('id', __('Id'));
         $grid->column('name', __('Name'));
         $grid->column('email', __('Email'));
@@ -39,12 +39,7 @@ class UserController extends AdminController
         //$grid->column('created_at')->date('Y-m-d');
         $grid->column('created_at', __('Created at'));
         $grid->column('updated_at', __('Updated at'));
-     
-        $grid->column('confirmed')->display(function() {
-            return '<a href="/admin/visits/confirmed">confirm</a>';
-        });
         
-    
         $grid->tools(function ($tools) {
             $tools->append("<a href='/admin/pets/create' class='btn btn-default'>Add Pet</a>");
         });
@@ -57,10 +52,6 @@ class UserController extends AdminController
         // });
         //to add pet from users index
         
-
-
-      
-
         return $grid;
     }
 
@@ -119,8 +110,5 @@ class UserController extends AdminController
     }
 
 
-    public function confirmed()
-    {
-        dd('done');
-    }
+    
 }
