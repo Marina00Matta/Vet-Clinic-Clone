@@ -58,7 +58,7 @@ Route::group([
  
     /*FOLLOW-UP ROUTES*/
 
-    $router->resource('users', FollowupController::class);
+    $router->resource('followUp', FollowupController::class);
 
     });
    

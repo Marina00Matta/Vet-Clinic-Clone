@@ -63,6 +63,7 @@ class VisitController extends Controller
         $visit->status = $request->status;
         $visit->save();
     }
+    
     public function updateStatus(UpdateVisitRequest $request)
     {
         $visit = Visit::find($request->visit);
