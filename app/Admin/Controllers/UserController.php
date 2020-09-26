@@ -39,28 +39,15 @@ class UserController extends AdminController
         //$grid->column('created_at')->date('Y-m-d');
         $grid->column('created_at', __('Created at'));
         $grid->column('updated_at', __('Updated at'));
-        // $grid->actions(function ($actions) {
-    
-        //     // the array of data for the current row
-        //     $actions->row;
-            
-        //     // gets the current row primary key value
-        //     $actions->getKey();
-        // });
-        // $grid->actions(function ($actions) {
-    
-        //     // append an action.
-        //     $actions->append('<a href=""><i class="fa fa-eye">hh</i></a>');
-        
-        //     // prepend an action.
-        //     $actions->prepend('<a href=""><i class="fa fa-paper-plane"></i></a>');
-        // });
+     
         $grid->column('confirmed')->display(function() {
             return '<a href="/admin/visits/confirmed">confirm</a>';
         });
         
     
-      
+        $grid->tools(function ($tools) {
+            $tools->append("<a href='/admin/pets/create' class='btn btn-default'>Add Pet</a>");
+        });
          //filter by name
         // $grid->filter(function($filter){
 
@@ -69,9 +56,7 @@ class UserController extends AdminController
         
         // });
         //to add pet from users index
-        $grid->tools(function ($tools) {
-            $tools->append("<a href='/admin/pets/create' class='btn btn-default'>Add Pet</a>");
-        });
+        
 
 
       
