@@ -9,6 +9,8 @@ use Encore\Admin\Grid;
 use Encore\Admin\Show;
 use App\User;
 use App\Pet;
+use Encore\Admin\Layout\Content;
+
 class VisitController extends AdminController
 {
     /**
@@ -44,9 +46,17 @@ class VisitController extends AdminController
         $grid->filter(function($filter){
 
             $filter->disableIdFilter();
-            $filter->like('name', 'PetOwner');
-        
+            $filter->like('name', 'PetOwner');    
         });
+
+        // $grid->column('confirmed')->display(function ($id) {
+        //     $visit = Visit::findOrFail($id);
+        //     $visit->status = 'confirmed';
+        //     $visit.edit();
+        //     dd('done');
+        //     return '<a href="/admin/visits/confirmed/'.$this->id.'">confirm</a>';
+        // });
+        
         
 
         return $grid;
@@ -72,6 +82,7 @@ class VisitController extends AdminController
         $show->field('status', __('Status'));
         $show->field('created_at', __('Created at'));
         $show->field('updated_at', __('Updated at'));
+
 
         return $show;
     }
@@ -102,9 +113,15 @@ class VisitController extends AdminController
     public function confirmed($id)
     {
         // dd($request);
-        $visit = Visit::findOrFail($id);
-        $visit->status = 'confirmed';
-        $visit.update();
-        dd('done');
+       
+
+        $visit = Visit::where('id', '=', $id)->first();
+        // dd($visit);
+        $visit->status = "completed";
+        // $visit.update($id, $visit);
+         $visit->update();
+        return redirect('admin/visits');
+
+        // dd($visit);
     }
 }

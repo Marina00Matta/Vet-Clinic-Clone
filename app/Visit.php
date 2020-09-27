@@ -22,4 +22,11 @@ class Visit extends Model
     {
         return $this->belongsTo('App\User');
     }
+
+    // function confirmed($id){
+    //     $visit = Visit::findOrFail($id);
+    //     $visit->status = 'confirmed';
+    //     $visit.update();
+    //     dd('done');
+    // }
 }
