@@ -38,7 +38,7 @@ class VisitController extends AdminController
         $grid->column('created_at', __('Created at'));
         $grid->column('updated_at', __('Updated at'));
         $grid->column('confirmed')->display(function() {
-            return '<a href="/admin/visits/confirmed">confirm</a>';
+            return '<a href="/admin/visits/confirmed/'.$this->id.'">confirm</a>';
         });
 
         $grid->filter(function($filter){
@@ -99,8 +99,12 @@ class VisitController extends AdminController
     }
 
 
-    public function confirmed()
+    public function confirmed($id)
     {
+        // dd($request);
+        $visit = Visit::findOrFail($id);
+        $visit->status = 'confirmed';
+        $visit.update();
         dd('done');
     }
 }
