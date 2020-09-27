@@ -41,7 +41,7 @@ class PetsController extends Controller
     public function index()
     {
         return PetResource::collection(    
-            Pet::where('user_id', 2)->get()
+            Pet::where('user_id', auth()->user()->id)->get()
         );
     }
 }
