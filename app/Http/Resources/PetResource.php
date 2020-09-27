@@ -16,6 +16,7 @@ class PetResource extends JsonResource
     public function toArray($request)
     {
         return [
+            'pet_id'=>$this->id,
             'pet_name'=>$this->name
         ];
     }
