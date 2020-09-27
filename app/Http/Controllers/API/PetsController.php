@@ -22,7 +22,6 @@ class PetsController extends Controller
             'age' => request()->age,
             'weight' => request()->weight,
             'neutered'=> request()->neutered ? "yes":"no",
-            'previous_problems' => request()->previous_problems,
             'drug_allergies' => request()->drug_allergies,
             'current_diet' => request()->current_diet,
             'current_medication'=> request()->current_medication,
@@ -42,7 +41,7 @@ class PetsController extends Controller
     public function index()
     {
         return PetResource::collection(    
-            Pet::where('user_id', auth()->user()->id)->get()
+            Pet::where('user_id', 2)->get()
         );
     }
 }

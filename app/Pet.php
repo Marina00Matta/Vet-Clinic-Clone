@@ -16,7 +16,6 @@ class Pet extends Model
         'species',
         'weight',
         'neutered',
-        'previous_problems',
         'drug_allergies',
         'current_diet',
         'current_medication'

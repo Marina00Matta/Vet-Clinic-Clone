@@ -43,8 +43,8 @@ class VisitController extends Controller
             $admin = User::find(1);
             $admin_mail = new NewMail($admin);
             
-            Mail::to($user->email)->send($user_mail);
-            Mail::to($admin->email)->send($admin_mail);
+            // Mail::to($user->email)->send($user_mail);
+            // Mail::to($admin->email)->send($admin_mail);
         }
         return response()->json(['status' => 'success' ]); 
 
