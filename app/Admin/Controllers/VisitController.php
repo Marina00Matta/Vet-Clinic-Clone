@@ -39,10 +39,13 @@ class VisitController extends AdminController
         $grid->column('status', __('Status'));
         $grid->column('created_at', __('Created at'));
         $grid->column('updated_at', __('Updated at'));
+       
         $grid->column('confirmed')->display(function() {
+            if ($this->status == 'pending'){
             return '<a href="/admin/visits/confirmed/'.$this->id.'">confirm</a>';
+            }
         });
-
+    
         $grid->filter(function($filter){
 
             $filter->disableIdFilter();
