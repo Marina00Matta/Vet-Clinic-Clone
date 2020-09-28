@@ -21,6 +21,6 @@ class NewMail extends Mailable
     
     public function build()
     {
-        return $this->subject('this is marina')->view('Email/emailtest');
+        return $this->subject('Confirmation mail upon your visit reservation')->view('Email/emailtest');
     }
 }

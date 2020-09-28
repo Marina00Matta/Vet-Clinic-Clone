@@ -34,25 +34,15 @@ class FollowupController extends AdminController
         $grid->column('phone_number', __('Phone number'));
         $grid->column('last_visit', __('Last visit'));
         $grid->column('contacted', __('Contacted'));
-        // $grid->column('address', __('Address'));
-        // $grid->column('remember_token', __('Remember token'));
-        // $grid->column('created_at', __('Created at'));
-        // $grid->column('updated_at', __('Updated at'));
-        // $grid->filter(function($filter){
-
-        //     $filter->disableIdFilter();
-        //     $filter->like('last_visit', 'Last Visit');
-
-            
-        
-        // });
-
-        $grid->quickSearch(function ($model, $query) {
-            // $model->where('last_visit', $query)->orWhere('last_visit', 'like', "%{$query}%");
-            $model->whereDate('last_visit' , "%{$query}%");
-
+      
+        $grid->column('call')->display(function() {
+            return '<a href="/admin/followUp/call/'.$this->id.'">contacted</a>';
         });
 
+        $grid->filter(function($filter){
+            $filter->disableIdFilter();
+            $filter->between('last_visit', 'search by Last Visit')->date(300);
+    });
         return $grid;
     }
 
@@ -63,6 +53,7 @@ class FollowupController extends AdminController
      * @return Show
      */
     protected function detail($id)
+
     {
         $show = new Show(User::findOrFail($id));
 
@@ -102,5 +93,20 @@ class FollowupController extends AdminController
         $form->text('remember_token', __('Remember token'));
 
         return $form;
+    }
+
+    public function call($id)
+    {
+        // dd($request);
+       
+
+        $user = User::findorfail($id);
+        // dd($user);
+        $user->contacted = date("Y-m-d");
+        // $visit.update($id, $visit);
+         $user->update();
+        return redirect('admin/followUp');
+
+        // dd($visit);
     }
 }
