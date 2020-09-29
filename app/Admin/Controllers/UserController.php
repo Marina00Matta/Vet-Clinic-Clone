@@ -44,12 +44,20 @@ class UserController extends AdminController
             $tools->append("<a href='/admin/pets/create' class='btn btn-default'>Add Pet</a>");
         });
          //filter by name
-        // $grid->filter(function($filter){
-
-        //     $filter->disableIdFilter();
-        //     $filter->like('last_visit', 'Last Visit');
+        $grid->filter(function($filter){
+            // $filter->equal('date')->datetime($options);
+            $filter->group('last_visit', function ($group) {
+                $group->gt();
+                $group->lt();
+                // $group->nlt('not less than');
+                // $group->ngt('not greater than');
+                // $group->equal('equal to');
+            });
+            // $filter->disableIdFilter();
+            // $filter->like('last_visit', 'Last Visit');
+            // $filter->in('address')->multipleSelect([]);
         
-        // });
+        });
         //to add pet from users index
         
         return $grid;

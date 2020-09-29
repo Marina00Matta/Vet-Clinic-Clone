@@ -53,6 +53,7 @@ Route::group([
 
     /*VISIT ROUTES*/
     $router->get('visits/confirmed/{id}', 'VisitController@confirmed');
+    $router->get('visits/today', 'VisitController@visitsOftofay');
     $router->resource('visits', VisitController::class);
  
     /*FOLLOW-UP ROUTES*/

@@ -100,10 +100,10 @@ class PetController extends AdminController
         $form->text('name', __('Name'))->rules('required|min:3');
         $form->radio('species')->options(['dog' => 'Dog', 'cat'=> 'Cat'])->default('dog'); 
         $form->radio('gender')->options(['male' => 'Male', 'female'=> 'Female'])->default('male'); 
-        $form->text('breed', __('Breed'))->rules('regex:"(?=.*[A-Za-z])"');
-        $form->text('color', __('Color'))->rules('regex:"(?=.*[A-Za-z])"');
+        $form->text('breed', __('Breed'))->rules('regex:"(?=.*[A-Za-z])"')->rules('nullable');
+        $form->text('color', __('Color'))->rules('regex:"(?=.*[A-Za-z])"')->rules('nullable');
         $form->number('age', __('Age'));
-        $form->decimal('weight', __('Weight'))->rules('min:1|max:2');
+        $form->decimal('weight', __('Weight'))->rules('min:1|max:2')->rules('nullable');
         $form->radio('neutered')->options(['yes' => 'Yes', 'no'=> 'No'])->default('no'); 
         // $form->textarea('previous_problems', __('Previous problems'))->rules('nullable')->default('none');
         $form->textarea('drug_allergies', __('Drug allergies'))->rules('nullable')->default('none');

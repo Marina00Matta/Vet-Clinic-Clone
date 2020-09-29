@@ -37,6 +37,7 @@ class VisitController extends AdminController
         $grid->column('date', __('Date'));
         $grid->column('time', __('Time'));
         $grid->column('status', __('Status'));
+      
         $grid->column('created_at', __('Created at'));
         $grid->column('updated_at', __('Updated at'));
        
@@ -50,17 +51,7 @@ class VisitController extends AdminController
 
             $filter->disableIdFilter();
             $filter->like('name', 'PetOwner');    
-        });
-
-        // $grid->column('confirmed')->display(function ($id) {
-        //     $visit = Visit::findOrFail($id);
-        //     $visit->status = 'confirmed';
-        //     $visit.edit();
-        //     dd('done');
-        //     return '<a href="/admin/visits/confirmed/'.$this->id.'">confirm</a>';
-        // });
-        
-        
+        });     
 
         return $grid;
     }
@@ -127,4 +118,40 @@ class VisitController extends AdminController
 
         // dd($visit);
     }
+    protected function visitsOftofay()
+    {
+       
+
+        $date = date('Y-m-d') ;
+        $visits = Visit::where('date','=',$date )->get();
+        // dd($visits);
+        $grid = new Grid(new Visit());
+        // $grid = $visits;
+        $grid->column('id', __('Id'));
+        $grid->column('user.name', __('Pet Owner'));
+        $grid->column('pet.name', __('Pet Name'));
+        // $grid->column('user_id', __('User id'));
+        // $grid->column('pet_id', __('Pet id'));
+        $grid->column('date', __('Date'));
+        $grid->column('time', __('Time'));
+        $grid->column('status', __('Status'));
+        $grid->column('created_at', __('Created at'));
+        $grid->column('updated_at', __('Updated at'));
+       
+        $grid->column('confirmed')->display(function() {
+            if ($this->status == 'pending'){
+            return '<a href="/admin/visits/confirmed/'.$this->id.'">confirm</a>';
+            }
+        });   
+
+        // return $grid->filter(function($filter){
+
+        //     $filter->like($this.date, $date);  
+        // $grid->filter->where(function($query){
+
+            // $query->where('status', 'like', $date);
+        // });
+        return $grid->visits;     
+    }
+
 }

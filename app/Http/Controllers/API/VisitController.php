@@ -66,11 +66,12 @@ class VisitController extends Controller
         $visit->save();
     }
     
-    public function updateStatus(UpdateVisitRequest $request)
+    public function updateStatus(VisitRequest $request)
     {
-        $visit = Visit::find($request->visit);
-        $visit->status = $request->status;
-        $visit->save();
+        $visit = Visit::where('user_id',$request->user_id)
+        ->where('date',$request->date)->where('time',$request->time);
+        // $visit->status = 'canceled';
+        $visit->update(['status'=>$request->status]);
     }
 
     
