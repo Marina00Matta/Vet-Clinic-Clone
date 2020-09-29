@@ -59,6 +59,7 @@ Route::group([
     /*FOLLOW-UP ROUTES*/
 
     $router->resource('followUp', FollowupController::class);
+    $router->get('followUp/call/{id}', 'FollowupController@call');
 
     });
    

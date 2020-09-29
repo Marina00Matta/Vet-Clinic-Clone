@@ -112,10 +112,10 @@ class UserController extends AdminController
         return $form;
     }
 
-    public function delete()
-    {
-        Permission::check('delete-user');
-    }
+    // public function delete()
+    // {
+    //     Permission::check('delete-user');
+    // }
 
 
     

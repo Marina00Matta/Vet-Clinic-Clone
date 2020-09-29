@@ -51,7 +51,18 @@ class VisitController extends AdminController
 
             $filter->disableIdFilter();
             $filter->like('name', 'PetOwner');    
-        });     
+  
+        });
+        // $filter->equal('column')->date();
+        // $grid->column('confirmed')->display(function ($id) {
+        //     $visit = Visit::findOrFail($id);
+        //     $visit->status = 'confirmed';
+        //     $visit.edit();
+        //     dd('done');
+        //     return '<a href="/admin/visits/confirmed/'.$this->id.'">confirm</a>';
+        // });
+        
+        
 
         return $grid;
     }

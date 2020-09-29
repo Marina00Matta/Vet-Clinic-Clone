@@ -70,7 +70,6 @@ class VisitController extends Controller
     {
         $visit = Visit::where('user_id',$request->user_id)
         ->where('date',$request->date)->where('time',$request->time);
-        // $visit->status = 'canceled';
         $visit->update(['status'=>$request->status]);
     }
 
