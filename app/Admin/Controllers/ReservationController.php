@@ -39,8 +39,8 @@ class ReservationController extends AdminController
         $grid->column('service.name', __('Service'));
         $grid->column('date', __('Date'));
         $grid->column('status', __('Status'));
-        $grid->column('created_at', __('Created at'));
-        $grid->column('updated_at', __('Updated at'));
+        // $grid->column('created_at', __('Created at'));
+        // $grid->column('updated_at', __('Updated at'));
 
 
         $grid->filter(function($filter){

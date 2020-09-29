@@ -55,7 +55,10 @@ class VisitController extends Controller
             $reservation->visit_id = $visit->id;
             $reservation->service_id = $service;
             $reservation->date = $request->date;
+            $reservation->status = 0;
+            $reservation->save();
             }
+            return response()->json(['status'=>'success']);
         }
        
         return $visit;
