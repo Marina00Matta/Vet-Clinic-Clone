@@ -41,7 +41,7 @@ class FollowupController extends AdminController
 
         $grid->filter(function($filter){
             $filter->disableIdFilter();
-            $filter->between('last_visit', 'search by Last Visit')->date(300);
+            $filter->between('last_visit', 'search by Last Visit')->date();
     });
         return $grid;
     }
