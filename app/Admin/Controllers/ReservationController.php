@@ -6,6 +6,7 @@ use App\Reservation;
 use App\User;
 use App\Pet;
 use App\Service;
+use App\Visit;
 use Encore\Admin\Controllers\AdminController;
 use Encore\Admin\Form;
 use Encore\Admin\Grid;
