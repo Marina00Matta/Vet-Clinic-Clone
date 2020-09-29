@@ -29,6 +29,7 @@ class VisitRequest extends FormRequest
             'date'=>'required',
             'time'=>'required',
             'status'=>'required',
+            'services'=>'required',
         ];
     }
 }

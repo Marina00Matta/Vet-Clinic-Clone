@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Visit;
 use App\Pet;
 use App\User;
+use App\Reservation;
 use App\Http\Resources\VisitResource;
 use App\Http\Requests\visits\VisitRequest;
 use App\Http\Requests\visits\UpdateVisitRequest;
@@ -37,6 +38,7 @@ class VisitController extends Controller
         $visit->time = $request->time;
         $visit->status = $request->status;
         $visit->save();
+        // dd($visit);
         if ($visit) {
             $user = User::find ($visit->user_id);
             $user_mail = new NewMail($user);
@@ -45,8 +47,19 @@ class VisitController extends Controller
             
             // Mail::to($user->email)->send($user_mail);
             // Mail::to($admin->email)->send($admin_mail);
+            // $services = ;
+            $array1 = [];
+            $array1 = $request->services;
+            foreach ( $array1  as $service ){
+            $reservation = new Reservation();
+            $reservation->visit_id = $visit->id;
+            $reservation->service_id = $service;
+            $reservation->date = $request->date;
+            }
         }
-        return response()->json(['status' => 'success' ]); 
+       
+        return $visit;
+        // response()->json(['status' => 'success' ]); 
 
     }
 
