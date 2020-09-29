@@ -35,14 +35,20 @@ class ReservationController extends AdminController
         $grid = new Grid(new Reservation());
 
         $grid->column('id', __('Id'));
-        $grid->column('user.name', __('Pet Owner'));
+        $grid->column('Pet Onwer')->display(function() {
+            $Visit = Visit::where('id', '=', $this->visit_id)->first();
+            $user = User::where('id', '=',$Visit->user_id)->first();
+            return $user->name;
+        });
         $grid->column('pet.name', __('Pet Name'));
         $grid->column('service.name', __('Service'));
         $grid->column('date', __('Date'));
         $grid->column('status', __('Status'));
-        // $grid->column('created_at', __('Created at'));
-        // $grid->column('updated_at', __('Updated at'));
+        $grid->column('created_at', __('Created at'));
+        $grid->column('updated_at', __('Updated at'));
+        // $grid->column('Visit id', __('visit_id'));
 
+        
 
         $grid->filter(function($filter){
 
@@ -73,6 +79,7 @@ class ReservationController extends AdminController
         $show->field('status', __('Status'));
         $show->field('created_at', __('Created at'));
         $show->field('updated_at', __('Updated at'));
+       
 
         return $show;
     }
