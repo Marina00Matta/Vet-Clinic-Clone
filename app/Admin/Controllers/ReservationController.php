@@ -6,6 +6,7 @@ use App\Reservation;
 use App\User;
 use App\Pet;
 use App\Service;
+use App\Visit;
 use Encore\Admin\Controllers\AdminController;
 use Encore\Admin\Form;
 use Encore\Admin\Grid;
@@ -72,6 +73,10 @@ class ReservationController extends AdminController
         $show->field('status', __('Status'));
         $show->field('created_at', __('Created at'));
         $show->field('updated_at', __('Updated at'));
+        $grid->column('Pet Onwer')->display(function() {
+            $Visit = Visit::find('id',$this.visit_id);
+            return $Visit->user_id;
+        });
 
         return $show;
     }
@@ -85,15 +90,15 @@ class ReservationController extends AdminController
     {
         $form = new Form(new Reservation());
 
-        $form->select('user_id',__('Pet Owner'))->options(User::all()->pluck('name','id'))->rules('required');
-        $form->select('pet_id',__('Pet Name'))->options(Pet::all()->pluck('name','id'))->rules('required');
+        // $form->select('user_id',__('Pet Owner'))->options(User::all()->pluck('name','id'))->rules('required');
+        // $form->select('pet_id',__('Pet Name'))->options(Pet::all()->pluck('name','id'))->rules('required');
         $form->select('service_id',__('Service'))->options(Service::all()->pluck('name','id'));
         $form->datetime('date', __('Date'))->default(date('Y-m-d H:i:s'))->rules('required|min:3');
-        $form->select('status',__('Status'))->options([
-            'pending' => 'Pending',
-            'completed' => 'completed',
-            'canceled' => 'Canceled',
-        ])->default('pending');
+        // $form->select('status',__('Status'))->options([
+        //     'pending' => 'Pending',
+        //     'completed' => 'completed',
+        //     'canceled' => 'Canceled',
+        // ])->default('pending');
 
         return $form;
     }
