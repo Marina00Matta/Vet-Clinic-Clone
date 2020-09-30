@@ -40,15 +40,21 @@ class ReservationController extends AdminController
             $user = User::where('id', '=',$Visit->user_id)->first();
             return $user->name;
         });
-        $grid->column('pet.name', __('Pet Name'));
+        $grid->column('Pet Name')->display(function() {
+            $Visit = Visit::where('id', '=', $this->visit_id)->first();
+            $pet = Pet::where('id', '=',$Visit->pet_id)->first();
+            return $pet->name;
+        });
         $grid->column('service.name', __('Service'));
         $grid->column('date', __('Date'));
-        $grid->column('status', __('Status'));
-        $grid->column('created_at', __('Created at'));
-        $grid->column('updated_at', __('Updated at'));
-        // $grid->column('Visit id', __('visit_id'));
-
-        
+        $grid->column('status')->display(function() {
+            if ($this->status == 0){
+            return '<a href="/admin/reservations/checked/'.$this->id.'">Check</a>';
+            }
+            else {
+                return 'Checked';
+            }
+        });
 
         $grid->filter(function($filter){
 
@@ -61,6 +67,7 @@ class ReservationController extends AdminController
         return $grid;
     }
 
+    
     /**
      * Make a show builder.
      *
@@ -106,6 +113,21 @@ class ReservationController extends AdminController
         return $form;
     }
 
+
+    public function checked($id)
+    {
+        // dd($request);
+       
+
+        $reservation = Reservation::where('id', '=', $id)->first();
+        // dd($visit);
+        $reservation->status = 1;
+        // $visit.update($id, $visit);
+         $reservation->update();
+        return redirect('admin/reservations');
+
+        // dd($visit);
+    }
 
    
 }
