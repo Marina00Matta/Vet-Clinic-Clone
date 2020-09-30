@@ -41,8 +41,8 @@ class PetController extends AdminController
         $grid->column('drug_allergies', __('Drug allergies'));
         $grid->column('current_diet', __('Current diet'));
         $grid->column('current_medication', __('Current medication'));
-        $grid->column('created_at', __('Created at'));
-        $grid->column('updated_at', __('Updated at'));
+        // $grid->column('created_at', __('Created at'));
+        // $grid->column('updated_at', __('Updated at'));
 
 
         $grid->filter(function($filter){

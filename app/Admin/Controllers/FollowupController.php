@@ -59,16 +59,16 @@ class FollowupController extends AdminController
 
         $show->field('id', __('Id'));
         $show->field('name', __('Name'));
-        $show->field('email', __('Email'));
-        $show->field('email_verified_at', __('Email verified at'));
-        $show->field('password', __('Password'));
+        // $show->field('email', __('Email'));
+        // $show->field('email_verified_at', __('Email verified at'));
+        // $show->field('password', __('Password'));
         $show->field('phone_number', __('Phone number'));
         $show->field('last_visit', __('Last visit'));
         $show->field('contacted', __('Contacted'));
         $show->field('address', __('Address'));
-        $show->field('remember_token', __('Remember token'));
-        $show->field('created_at', __('Created at'));
-        $show->field('updated_at', __('Updated at'));
+        // $show->field('remember_token', __('Remember token'));
+        // $show->field('created_at', __('Created at'));
+        // $show->field('updated_at', __('Updated at'));
 
         return $show;
     }
@@ -83,14 +83,14 @@ class FollowupController extends AdminController
         $form = new Form(new User());
 
         $form->text('name', __('Name'));
-        $form->email('email', __('Email'));
-        $form->datetime('email_verified_at', __('Email verified at'))->default(date('Y-m-d H:i:s'));
-        $form->password('password', __('Password'));
+        // $form->email('email', __('Email'));
+        // $form->datetime('email_verified_at', __('Email verified at'))->default(date('Y-m-d H:i:s'));
+        // $form->password('password', __('Password'));
         $form->text('phone_number', __('Phone number'));
         $form->date('last_visit', __('Last visit'))->default(date('Y-m-d'));
         $form->date('contacted', __('Contacted'))->default(date('Y-m-d'));
         $form->text('address', __('Address'));
-        $form->text('remember_token', __('Remember token'));
+        // $form->text('remember_token', __('Remember token'));
 
         return $form;
     }

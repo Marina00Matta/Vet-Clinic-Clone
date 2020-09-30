@@ -62,8 +62,8 @@ class BoardingController extends AdminController
         $show->field('reservation.date', __('Reservation Date'));
         $show->field('cage_id', __('Cage Number'));
         $show->field('end_date', __('End date'));
-        $show->field('created_at', __('Created at'));
-        $show->field('updated_at', __('Updated at'));
+        // $show->field('created_at', __('Created at'));
+        // $show->field('updated_at', __('Updated at'));
 
         return $show;
     }

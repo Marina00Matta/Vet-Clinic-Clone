@@ -84,8 +84,8 @@ class ReservationController extends AdminController
         $show->field('service.name', __('Service'));
         $show->field('date', __('Date'));
         $show->field('status', __('Status'));
-        $show->field('created_at', __('Created at'));
-        $show->field('updated_at', __('Updated at'));
+        // $show->field('created_at', __('Created at'));
+        // $show->field('updated_at', __('Updated at'));
        
 
         return $show;
