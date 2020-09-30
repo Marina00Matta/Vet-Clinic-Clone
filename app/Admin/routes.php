@@ -60,6 +60,7 @@ Route::group([
 
     $router->resource('followUp', FollowupController::class);
     $router->get('followUp/call/{id}', 'FollowupController@call');
+    $router->get('reservations/checked/{id}', 'ReservationController@checked');
 
     });
    
