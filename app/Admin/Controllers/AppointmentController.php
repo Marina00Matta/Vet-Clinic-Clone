@@ -27,8 +27,8 @@ class AppointmentController extends AdminController
         $grid = new Grid(new Appointment());
 
         $grid->column('id', __('Id'));
-        $grid->column('status', __('Status'));
-        $grid->column('date', __('Date'));
+        $grid->column('day', __('Day'));
+        // $grid->column('date', __('Date'));
         $grid->column('start_time', __('Start time'));
         $grid->column('end_time', __('End time'));
         $grid->column('created_at', __('Created at'));
@@ -48,8 +48,8 @@ class AppointmentController extends AdminController
         $show = new Show(Appointment::findOrFail($id));
 
         $show->field('id', __('Id'));
-        $show->field('status', __('Status'));
-        $show->field('date', __('Date'));
+        $show->field('day', __('Day'));
+        // $show->field('date', __('Date'));
         $show->field('start_time', __('Start time'));
         $show->field('end_time', __('End time'));
         $show->field('created_at', __('Created at'));
@@ -67,8 +67,17 @@ class AppointmentController extends AdminController
     {
         $form = new Form(new Appointment());
 
-        $form->text('status', __('Status'));
-        $form->date('date', __('Date'))->default(date('Y-m-d'));
+        $form->select('day',__('day'))->options([
+            0 => 'Sunday',
+            1 => 'Monday',
+            2 => 'Tuesday',
+            3 => 'Mednesday',
+            4 => 'Thursday',
+            5 => 'Friday',
+            6 => 'Saturday',
+
+        ])->rules('required');
+        // $form->date('date', __('Date'));
         $form->time('start_time', __('Start time'))->default(date('H:i:s'));
         $form->time('end_time', __('End time'))->default(date('H:i:s'));
 

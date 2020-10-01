@@ -45,3 +45,6 @@ Route::get('/visits/all/{id}','API\VisitController@userIndex');
 Route::get('/visits/{id}','API\VisitController@showByUser');
 Route::post('/visits','API\VisitController@store');
 Route::put('/visits/cancel','API\VisitController@updateStatus');
+
+//Appointments apis
+Route::get('/appointments','API\AppointmentController@index');

@@ -15,7 +15,8 @@ class CreateAppointmentsTable extends Migration
     {
         Schema::create('appointments', function (Blueprint $table) {
             $table->id();
-            $table->enum('status', [0, 1, 2, 3, 4, 5, 6 ]);
+            // $table->enum('status', [0, 1, 2, 3, 4, 5, 6 ]);
+            $table->integer('day');
             $table->date('date')->nullable();
             $table->time('start_time');
             $table->time('end_time');

@@ -18,7 +18,7 @@ class HomeController extends Controller
             // ->description('<h4> Admin Panel</h4>')
             // ->header('Petopia');
             
-        
+    }    
 
 
         //    ->row(function (Row $row) {
@@ -32,7 +32,7 @@ class HomeController extends Controller
         // });
 
           //  ->row(function (Row $row) {
-function
+// function
                 // $row->column(4,  (Column $column) {
                 //     $column->append(Dashboard::environment());
                 // });
