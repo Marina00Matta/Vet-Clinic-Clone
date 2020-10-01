@@ -41,6 +41,7 @@ Route::get('/services/{service}', 'API\ServiceController@show');
 Route::post('/pet/add','API\PetsController@add');
 
 //visits apis
+Route::get('/visits/all/{id}','API\VisitController@userIndex');
 Route::get('/visits/{id}','API\VisitController@showByUser');
 Route::post('/visits','API\VisitController@store');
 Route::put('/visits/cancel','API\VisitController@updateStatus');

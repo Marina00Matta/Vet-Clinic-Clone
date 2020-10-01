@@ -76,7 +76,12 @@ class VisitController extends Controller
 
     }
 
-   
+    public function userIndex($id)
+    {
+        return VisitResource::collection(    
+            Visit::where('user_id','!=', $id)->get()
+        );
+    }
     public function update(VisitRequest $request)
     {
         $visit = Visit::find($request->visit);
