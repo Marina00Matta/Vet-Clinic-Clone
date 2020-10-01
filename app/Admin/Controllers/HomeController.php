@@ -32,8 +32,8 @@ class HomeController extends Controller
         // });
 
           //  ->row(function (Row $row) {
-
-                // $row->column(4, function (Column $column) {
+function
+                // $row->column(4,  (Column $column) {
                 //     $column->append(Dashboard::environment());
                 // });
 
@@ -51,6 +51,6 @@ class HomeController extends Controller
             //     ['text' => 'User management', 'url' => '/admin/users'],
             //     ['text' => 'Edit user']
             // );
-    }
+    // }
 
 }
